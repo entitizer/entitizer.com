@@ -1,0 +1,48 @@
+{
+  "name": "entitizer.coms",
+  "version": "0.1.0",
+  "description": "Entitizer.com",
+  "main": "./lib/app.js",
+  "private": true,
+  "scripts": {
+    "start": "tsc && node ./lib/app.js",
+    "pretest": "npm run tsc",
+    "test": "mocha",
+    "tsc": "tsc",
+    "tscw": "tsc -w",
+    "preversion": "npm run tsc",
+    "postversion": "git push --follow-tags",
+    "prepublish": "npm run tsc"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Mitea@bitbucket.org/entitizer/entitizer.com.git"
+  },
+  "keywords": [
+    "entitizer",
+    "entitizer.com"
+  ],
+  "author": "Dumitru Cantea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://Mitea@bitbucket.org/entitizer/entitizer.com/issues"
+  },
+  "homepage": "https://Mitea@bitbucket.org/entitizer/entitizer.com#readme",
+  "devDependencies": {
+    "@types/express": "^4.0.35",
+    "@types/node": "^8.x.x",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "foundation-sites": "^6.4.3",
+    "i18n": "^0.8.3",
+    "ournet.logger": "^0.1.0",
+    "pug": "^2.0.0-rc.4"
+  }
+}
