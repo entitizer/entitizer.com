@@ -1,4 +1,8 @@
 
+import * as moment from 'moment';
+
+export { moment }
+
 const NO_CACHE = 'private, max-age=0, no-cache';
 const PUBLIC_CACHE = 'public, max-age=';
 const CACHE_CONTROL = 'Cache-Control';

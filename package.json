@@ -5,11 +5,14 @@
   "main": "./lib/app.js",
   "private": true,
   "scripts": {
-    "start": "tsc && node ./lib/app.js",
-    "pretest": "npm run tsc",
+    "start": "tsc && npm run build && node ./lib/app.js",
+    "build": "npm run browserify && npm run gulp",
+    "pretest": "npm run tsc && npm run gulp",
     "test": "mocha",
     "tsc": "tsc",
     "tscw": "tsc -w",
+    "gulp": "./node_modules/.bin/gulp",
+    "browserify": "./node_modules/.bin/browserify ./assets/js/main.js -o ./public/assets/js/main.js",
     "preversion": "npm run tsc",
     "postversion": "git push --follow-tags",
     "prepublish": "npm run tsc"
@@ -34,14 +37,30 @@
   "devDependencies": {
     "@types/express": "^4.0.35",
     "@types/node": "^8.x.x",
+    "browserify": "^14.4.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
+    "gulp-clean-css": "^3.8.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-empty": "^0.1.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^8.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "jquery": "^3.2.1",
     "typescript": "^2.4.2"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "foundation-sites": "^6.4.3",
     "i18n": "^0.8.3",
+    "moment": "^2.18.1",
     "ournet.logger": "^0.1.0",
     "pug": "^2.0.0-rc.4"
   }

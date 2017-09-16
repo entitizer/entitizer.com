@@ -1,0 +1,64 @@
+
+extends ./_layouts/root
+
+block header_content
+    .row
+        .column.text-center
+            #logo=project.name
+
+block main_content
+    .row.column.text-center
+        h5 Entitizer provides a smart, simple and extremely fast Entity Extraction service.
+    .row
+        .column.small-12
+            .section
+                .section-header
+                    h3 Free Entity Extraction
+                .section-content Entitizer provides a free solution of Named-entity recognition...
+        .column.small-12
+            #demo.section
+                .section-header
+                    h3 Demo
+                .section-content
+                    form#demo-form
+                        textarea#demo-text(name="text", cols="30", rows="5")
+                        .row
+                            .column.small-6
+                                select#demo-lang(name="lang", selected="ro")
+                                    option Select a language
+                                    option(value="ro") Romanian
+                                    option(value="ru") Russian
+                            .column.small-6.text-right
+                                button(type="submit", data-loading="Processing...").button.primary#demo-btn-run Process
+                .section-footer
+                    #demo-result.hide
+                        #result-header
+                            h4 Results
+                        #result-html
+
+        .column.small-12
+            #api.section
+                .section-header
+                    h3 API
+                .section-content
+                    dl
+                        dt Endpoint:
+                        dd
+                            span.label.alert GET
+                            code http://free.entitizer.net/v0/entitize
+                        dt Query strings:
+                        dd
+                            ul
+                                li
+                                    strong lang
+                                    |  - language code. Supported:
+                                    strong ro
+                                    | .
+                                li
+                                    strong text
+                                    | - text to be processed. Min 10, max 1000 chars.
+                        dt Limits:
+                        dd 100 calls per hour/IP.
+
+block scripts
+    script(src="/assets/js/main.js")

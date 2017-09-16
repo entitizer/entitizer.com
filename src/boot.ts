@@ -8,3 +8,7 @@ i18n.configure({
     cookie: 'ul',
     queryParameter: 'ul'
 });
+
+export function boot(app: any) {
+    app.use(i18n.init);
+}

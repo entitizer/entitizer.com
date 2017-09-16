@@ -1,10 +1,10 @@
 
 require('dotenv').config();
 
-import express from 'express';
+import * as express from 'express';
 import { logger } from './logger';
-import path from 'path';
-import { i18n } from './boot';
+import * as path from 'path';
+import { boot } from './boot';
 import { mountRoutes } from './routes';
 const cookieParser = require('cookie-parser');
 
@@ -14,15 +14,16 @@ const app = express();
 
 app.disable('x-powered-by');
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.disable('etag');
 
-app.use(express.static(path.join(__dirname, 'public'), {
+app.use(express.static(path.join(__dirname, '../public'), {
     maxAge: isProduction ? (1000 * 60 * 15) : 0
 }));
 
 app.use(cookieParser());
-app.use(i18n.init);
+
+boot(app);
 
 mountRoutes(app);
 
