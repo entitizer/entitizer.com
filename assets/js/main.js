@@ -66,9 +66,25 @@
         console.log('error', error);
     }
 
+    var processing = false;
+
     function startDemo() {
+        if (processing) {
+            return false;
+        }
         var text = $('#demo-text').val();
         var lang = $('#demo-lang').val();
+
+        if (!lang || lang.length !== 2 || !text || text.length < 10) {
+            return false;
+        }
+
+        processing = true;
+        var btn = $('#demo-btn-run');
+        btn.prop('disabled', true);
+        var processText = btn.text();
+        btn.text(btn.data('loading'));
+
         axios.get('http://localhost:41736/v0/entitize', {
             params: { text: text, lang: lang }
         })
@@ -79,7 +95,12 @@
             .then(function (result) {
                 showDemoResult(result, lang);
             })
-            .catch(showDemoError);
+            .catch(showDemoError)
+            .then(function () {
+                btn.text(processText);
+                btn.prop('disabled', false);
+                processing = false;
+            });
 
         return false;
     }
@@ -90,6 +111,19 @@
             event.preventDefault();
             return false;
         });
+
+        $('#demo-lang').change(testLanguage);
+        testLanguage();
+    }
+
+    function testLanguage() {
+        var lang = $('#demo-lang').val();
+        console.log('demo lang', lang);
+        if (lang && lang.length === 2) {
+            $('#demo-btn-run').prop('disabled', false);
+        } else {
+            $('#demo-btn-run').prop('disabled', true);
+        }
     }
 
 
