@@ -44,9 +44,12 @@
 
     function showDemoResult(result, lang) {
         $('#demo-result').removeClass('hide');
-        var data = result.data;
+        $('#demo-error').addClass('hide');
         var htmlEl = $('#result-html');
+        htmlEl.removeClass('hide');
         htmlEl.html('');
+
+        var data = result.data;
 
         var html = '<ul class="no-bullet">';
         html += '<li><h5>Entities <sup>' + data.entities.length + '</sup></li>';
@@ -63,7 +66,13 @@
     }
 
     function showDemoError(error) {
-        console.log('error', error);
+        showUIError(error.message);
+    }
+
+    function showUIError(message) {
+        $('#demo-result').removeClass('hide');
+        $('#result-html').addClass('hide');
+        $('#result-error').removeClass('hide').text(message);
     }
 
     var processing = false;
@@ -112,13 +121,13 @@
             return false;
         });
 
-        $('#demo-lang').change(testLanguage);
-        testLanguage();
+        $('#demo-lang').change(testInputData);
+        // $('#demo-text').change(testInputData);
+        testInputData();
     }
 
-    function testLanguage() {
+    function testInputData() {
         var lang = $('#demo-lang').val();
-        console.log('demo lang', lang);
         if (lang && lang.length === 2) {
             $('#demo-btn-run').prop('disabled', false);
         } else {

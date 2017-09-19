@@ -16,6 +16,30 @@ block main_content
                     h3 Free Entity Extraction
                 .section-content Entitizer provides a free solution of Named-entity recognition...
         .column.small-12
+            #api.section
+                .section-header
+                    h3 API
+                .section-content
+                    dl
+                        dt Endpoint:
+                        dd
+                            span.label.alert GET
+                            |  
+                            code.small.radius http://free.entitizer.net/v0/entitize
+                        dt Query strings:
+                        dd
+                            ul
+                                li
+                                    strong lang
+                                    |  - language code. Supported:
+                                    strong ro
+                                    | .
+                                li
+                                    strong text
+                                    | - text to be processed. Min 10, max 1000 chars.
+                        dt Limits:
+                        dd 100 calls per hour/IP.
+        .column.small-12
             #demo.section
                 .section-header
                     h3 Demo
@@ -31,33 +55,8 @@ block main_content
                                 button(type="submit", data-loading="Processing...").button.primary#demo-btn-run Process
                 .section-footer
                     #demo-result.hide
-                        #result-header
-                            h4 Results
-                        #result-html
-
-        .column.small-12
-            #api.section
-                .section-header
-                    h3 API
-                .section-content
-                    dl
-                        dt Endpoint:
-                        dd
-                            span.label.alert GET
-                            code http://free.entitizer.net/v0/entitize
-                        dt Query strings:
-                        dd
-                            ul
-                                li
-                                    strong lang
-                                    |  - language code. Supported:
-                                    strong ro
-                                    | .
-                                li
-                                    strong text
-                                    | - text to be processed. Min 10, max 1000 chars.
-                        dt Limits:
-                        dd 100 calls per hour/IP.
+                        #result-error.hide.alert.text-center.callout.radius
+                        #result-html.hide
 
 block scripts
     script(src="/assets/js/main.js")
