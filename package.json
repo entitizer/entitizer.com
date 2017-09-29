@@ -1,5 +1,5 @@
 {
-  "name": "entitizer.coms",
+  "name": "entitizer.com",
   "version": "0.1.0",
   "description": "Entitizer.com",
   "main": "./lib/app.js",
@@ -12,7 +12,7 @@
     "tsc": "tsc",
     "tscw": "tsc -w",
     "gulp": "./node_modules/.bin/gulp",
-    "browserify": "./node_modules/.bin/browserify ./assets/js/main.js -o ./public/assets/js/main.js",
+    "browserify": "./node_modules/.bin/browserify ./assets/js/demo.js -o ./public/assets/js/demo.js",
     "preversion": "npm run tsc",
     "postversion": "git push --follow-tags",
     "prepublish": "npm run tsc"
@@ -51,7 +51,9 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "jquery": "^3.2.1",
-    "typescript": "^2.4.2"
+    "json-beautify": "^1.0.1",
+    "typescript": "^2.4.2",
+    "vue": "^2.4.4"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -63,5 +65,8 @@
     "moment": "^2.18.1",
     "ournet.logger": "^0.1.0",
     "pug": "^2.0.0-rc.4"
+  },
+  "browser": {
+    "vue": "vue/dist/vue.common.js"
   }
 }

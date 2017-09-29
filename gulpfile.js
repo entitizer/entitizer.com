@@ -5,7 +5,7 @@ const sass = require('gulp-sass');
 const rename = require('gulp-rename');
 // const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-// const imagemin = require('gulp-imagemin');
+const imagemin = require('gulp-imagemin');
 // var gzip = require('gulp-gzip');
 // const rev = require('gulp-rev');
 // const foo = require('gulp-empty');
@@ -38,6 +38,14 @@ gulp.task('css-main', function () {
         .pipe(gulp.dest(dest));
 });
 
+gulp.task('img', function () {
+    return gulp.src('./assets/img/**/*')
+        .pipe(imagemin({
+            optimizationLevel: 5
+        }))
+        .pipe(gulp.dest('./public/assets/img'));
+});
+
 gulp.task('css', ['css-main']);
 
-gulp.task('default', ['css']);
+gulp.task('default', ['css', 'img']);

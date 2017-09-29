@@ -8,55 +8,57 @@ block header_content
 
 block main_content
     .row.column.text-center
-        h5 Entitizer provides a smart, simple and extremely fast Entity Extraction service.
-    .row
-        .column.small-12
-            .section
-                .section-header
-                    h3 Free Entity Extraction
-                .section-content Entitizer provides a free solution of Named-entity recognition...
-        .column.small-12
-            #api.section
-                .section-header
-                    h3 API
-                .section-content
-                    dl
-                        dt Endpoint:
-                        dd
-                            span.label.alert GET
-                            |  
-                            code.small.radius http://free.entitizer.net/v0/entitize
-                        dt Query strings:
-                        dd
-                            ul
-                                li
-                                    strong lang
-                                    |  - language code. Supported:
-                                    strong ro
-                                    | .
-                                li
-                                    strong text
-                                    | - text to be processed. Min 10, max 1000 chars.
-                        dt Limits:
-                        dd 100 calls per hour/IP.
-        .column.small-12
-            #demo.section
-                .section-header
-                    h3 Demo
-                .section-content
-                    form#demo-form
-                        textarea#demo-text(name="text", cols="30", rows="5")
-                        .row
-                            .column.small-6
-                                select#demo-lang(name="lang")
-                                    option Select a language
-                                    option(value="ro", selected) Romanian
-                            .column.small-6.text-right
-                                button(type="submit", data-loading="Processing...").button.primary#demo-btn-run Process
-                .section-footer
-                    #demo-result.hide
-                        #result-error.hide.alert.text-center.callout.radius
-                        #result-html.hide
+        h3 Free Named-Entity extraction for everyone!
+
+    #demo-app
+    script(type='v-template')#demo-template
+        #demo
+            #demo-header Demo
+            #demo-body
+                .row
+                    .column.small-2
+                        label.label-method.label.alert GET
+                    .column.small-10
+                        label#demo-url.label http://free.entitizer.com/v0/entitize
+                br
+                .row
+                    .column.small-2
+                        label.label-param.label ?text=
+                    .column.small-10
+                        textarea(rows=4, cols=10, v-model="text")#demo-text
+                .row
+                    .column.small-2
+                        label.label-param.label &amp;lang=
+                    .column.small-2
+                        select#demo-lang(v-model="lang")
+                            option(value='ro') ro
+                    .column.small-8 We work on adding new languages
+                .row
+                    .column.small-12.text-right
+                        button(type='buttom', v-on:click='processText', v-if="!processing", v-bind:disabled="!lang || !text || text.length<10").button.primary Process
+                        button(type='buttom', disabled, v-if="processing").button.primary Processing
+            #demo-footer(v-if="!!result")
+                h4 Response
+                pre
+                    code#demo-result {{ result }}
+
+            //- #demo.section
+            //-     .section-header
+            //-         h3 Demo
+            //-     .section-content
+            //-         form#demo-form
+            //-             textarea#demo-text(name="text", cols="30", rows="5")
+            //-             .row
+            //-                 .column.small-6
+            //-                     select#demo-lang(name="lang")
+            //-                         option Select a language
+            //-                         option(value="ro", selected) Romanian
+            //-                 .column.small-6.text-right
+            //-                     button(type="submit", data-loading="Processing...").button.primary#demo-btn-run Process
+            //-     .section-footer
+            //-         #demo-result.hide
+            //-             #result-error.hide.alert.text-center.callout.radius
+            //-             #result-html.hide
 
 block scripts
-    script(src="/assets/js/main.js")
+    script(src="/assets/js/demo.js")

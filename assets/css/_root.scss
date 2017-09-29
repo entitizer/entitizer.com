@@ -1,53 +1,37 @@
 
-.section {
-    max-width: 600px;
-    margin: 20px auto;
+body{
+    background-image: url('../img/seamless_paper_texture.png');
+    background-repeat: repeat;
 }
-.section-content{
-    background-color: #fff;
+
+#page-header,#page-main,#page-footer{
+    max-width: 940px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+}
+
+#demo-header{
+    border-top-left-radius: $global-radius;
+	border-top-right-radius: $global-radius;
+    padding: 8px 20px;
+    font-size: 140%;
+    border-bottom: 1px solid $dark-gray;
+    background: $light-gray;
+}
+
+#demo-body {
+    background: #fff;
     padding: 10px;
-    // @include shadow();
-    box-shadow: 0 0 6px 2px rgba(0,0,0,.10);
-    @include border-radius();
-}
-.section-footer{
-    background-color: #eee;
-    margin: 0px 10px;
-    padding: 20px;
 }
 
-#result-html{
-    .name{
-        font-weight: bold;
-    }
-    li{
-        padding: 6px 0px;
-        @include clearfix;
-    }
-    sup {
-        margin-left: 6px;
-    }
+#demo-footer {
+    background: $medium-gray;
+    padding: 10px 20px;
 }
 
-.entity-item{
-    @include clearfix;
-}
-
-.entity-img,.concept-img{
-    float: left;
-    img{
-        height: 45px;
-        width: 45px;
-        border-radius: 3px;
-        background-color: #eee;
-    }
-}
-.entity-info,.concept-info {
-    float: left;
-    margin-left: 15px;
-    overflow: hidden;
-    max-width: 90%;
-}
-.concept-item{
-    @include clearfix;
+#demo-result {
+    display: block;
+    font-size: 80%;
+    border:none;
+    background: none;
 }
