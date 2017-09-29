@@ -38,6 +38,16 @@ gulp.task('css-main', function () {
         .pipe(gulp.dest(dest));
 });
 
+gulp.task('js-demo', function () {
+    const dest = './public/assets/js';
+    return gulp.src('./public/assets/js/demo.js')
+        .pipe(uglify())
+        .pipe(rename({
+            extname: '.min.js'
+        }))
+        .pipe(gulp.dest(dest));
+});
+
 gulp.task('img', function () {
     return gulp.src('./assets/img/**/*')
         .pipe(imagemin({
@@ -47,5 +57,6 @@ gulp.task('img', function () {
 });
 
 gulp.task('css', ['css-main']);
+gulp.task('js', ['js-demo']);
 
-gulp.task('default', ['css', 'img']);
+gulp.task('default', ['css', 'img', 'js']);
