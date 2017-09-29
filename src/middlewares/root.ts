@@ -21,7 +21,10 @@ export function root(req: Request, res: any, next: NextFunction) {
 	res.locals.site = {
 		version: _package.version,
 		name: project.name,
-		head: {}
+		head: {
+			title: project.name,
+			description: project.description
+		}
 	};
 
 	res.locals.util = util;

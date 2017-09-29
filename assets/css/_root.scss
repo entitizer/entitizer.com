@@ -4,29 +4,43 @@ body{
     background-repeat: repeat;
 }
 
+#logo {
+    display: inline-block;
+    font-size: 200%;
+    color: $alert-color;
+    padding-top: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+
 #page-header,#page-main,#page-footer{
-    max-width: 940px;
+    max-width: 840px;
     margin: 0px auto;
     margin-bottom: 40px;
 }
 
-#demo-header{
+#demo-header {
     border-top-left-radius: $global-radius;
 	border-top-right-radius: $global-radius;
     padding: 8px 20px;
-    font-size: 140%;
     border-bottom: 1px solid $dark-gray;
     background: $light-gray;
+    h4{
+        margin:0px;
+        margin:0px;
+    }
 }
 
 #demo-body {
     background: #fff;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
 }
 
 #demo-footer {
     background: $medium-gray;
     padding: 10px 20px;
+    border-bottom-left-radius: $global-radius;
+	border-bottom-right-radius: $global-radius;
 }
 
 #demo-result {
@@ -34,4 +48,14 @@ body{
     font-size: 80%;
     border:none;
     background: none;
+}
+
+#demo {
+    .label{
+        font-size: 100%;
+    }
+}
+
+.section{
+    margin-bottom: 20px;
 }

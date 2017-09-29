@@ -4,20 +4,30 @@ extends ./_layouts/root
 block header_content
     .row
         .column.text-center
-            #logo=project.name
-
+            a(href='/')#logo=project.name
 block main_content
     .row.column.text-center
         h3 Free Named-Entity extraction for everyone!
-
+    br
     #demo-app
+    br
+    section
+        h3.section-header FAQ
+        .section-body
+            dl
+                dt Q: API Requests Limits?
+                dd A: You cam make 100 requests per hour per IP.
+                dt Q: Supported Languages?
+                dd A: Today Entitizer supports only Romanian. We plan to add a new language every 3 months.
+    br
     script(type='v-template')#demo-template
         #demo
-            #demo-header Demo
+            #demo-header
+                h4 Demo
             #demo-body
                 .row
                     .column.small-2
-                        label.label-method.label.alert GET
+                        label.label-method.label.secondary GET
                     .column.small-10
                         label#demo-url.label http://free.entitizer.com/v0/entitize
                 br
@@ -32,33 +42,16 @@ block main_content
                     .column.small-2
                         select#demo-lang(v-model="lang")
                             option(value='ro') ro
-                    .column.small-8 We work on adding new languages
+                    .column.small-8
+                    //- We work hard on adding new languages
                 .row
                     .column.small-12.text-right
-                        button(type='buttom', v-on:click='processText', v-if="!processing", v-bind:disabled="!lang || !text || text.length<10").button.primary Process
-                        button(type='buttom', disabled, v-if="processing").button.primary Processing
+                        button(type='buttom', v-on:click='processText', v-if="!processing", v-bind:disabled="!lang || !text || text.length<10").button.alert Process
+                        button(type='buttom', disabled, v-if="processing").button.alert Processing
             #demo-footer(v-if="!!result")
                 h4 Response
                 pre
                     code#demo-result {{ result }}
 
-            //- #demo.section
-            //-     .section-header
-            //-         h3 Demo
-            //-     .section-content
-            //-         form#demo-form
-            //-             textarea#demo-text(name="text", cols="30", rows="5")
-            //-             .row
-            //-                 .column.small-6
-            //-                     select#demo-lang(name="lang")
-            //-                         option Select a language
-            //-                         option(value="ro", selected) Romanian
-            //-                 .column.small-6.text-right
-            //-                     button(type="submit", data-loading="Processing...").button.primary#demo-btn-run Process
-            //-     .section-footer
-            //-         #demo-result.hide
-            //-             #result-error.hide.alert.text-center.callout.radius
-            //-             #result-html.hide
-
 block scripts
-    script(src="/assets/js/demo.js")
+    script(src="/assets/js/demo.js?v="+project.version)
