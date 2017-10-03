@@ -36,6 +36,14 @@ html(lang=culture.language)
           |  2017. Version  
           = project.version
 
+    // Global Site Tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-44040169-1')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+      gtag('config', 'UA-44040169-1');
+
     block scripts
     
     //- script.
