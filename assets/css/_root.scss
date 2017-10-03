@@ -24,7 +24,7 @@ body{
 	border-top-right-radius: $global-radius;
     padding: 8px 20px;
     border-bottom: 1px solid $dark-gray;
-    background: $light-gray;
+    background: $medium-gray;
     h4{
         margin:0px;
         margin:0px;
@@ -62,4 +62,10 @@ body{
 
 .section{
     margin-bottom: 20px;
+}
+
+#page-footer{
+    small {
+        color: #555;
+    }
 }

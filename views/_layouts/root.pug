@@ -29,7 +29,12 @@ html(lang=culture.language)
       .container
         block main_content
     footer#page-footer
-      .text-center Created in Moldova
+      .text-center
+        small
+          | Copyright by  
+          a(href='https://github.com/entitizer') Entitizer
+          |  2017. Version  
+          = project.version
 
     block scripts
     

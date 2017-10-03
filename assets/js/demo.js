@@ -9,15 +9,14 @@
         template: '#demo-template',
         data: {
             processing: false,
-            text: 'Secția pentru judecători a Consiliului Superior al Magistraturii a sesizat plenul Consiliului Superior al Magistraturii cu propunerea de admitere a cererii de numire în funcția de judecător formulate de procurorul Mihaela Moraru-Iorga, potrivit ordinii de zi soluționate a ședinței, postate pe site-ul instituției.',
+            text: 'Federația Română de Fotbal a fost amendată de Comisia de Disciplină a Federației Internaționale (FIFA) cu 25.000 de franci elvețieni, iar Arena Națională a fost suspendată o partidă, după comportamentul nepotrivit al suporterilor naționalei României la meciurile cu Armenia și Muntenegru, relatează EFE, citată de Agerpres.',
             lang: 'ro',
-            url: 'http://localhost:41736/v0/entitize',
+            url: 'http://free.entitizer.com/v0/entitize',
             result: ''
         },
         methods: {
             processText: function () {
                 var self = this;
-                console.log('text', this.text, this.lang, this.url);
                 if (this.processing || !this.text || !this.lang) {
                     return;
                 }
