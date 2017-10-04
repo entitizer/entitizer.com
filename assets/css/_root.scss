@@ -50,8 +50,9 @@ body{
 #demo-result {
     display: block;
     font-size: 80%;
-    border:none;
+    border: none;
     background: none;
+    max-height: 480px;
 }
 
 #demo {
