@@ -7,7 +7,7 @@
     function gEvent(name, params) {
         try {
             gtag('event', name, params);
-        } catch { }
+        } catch(e) { }
     }
 
     var app = new Vue({
