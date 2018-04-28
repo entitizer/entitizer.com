@@ -11,6 +11,7 @@ const imagemin = require('gulp-imagemin');
 // const foo = require('gulp-empty');
 const mincss = require('gulp-clean-css');
 const changed = require('gulp-changed');
+const pump = require('pump');
 
 gulp.task('css-main', function () {
     const dest = './public/assets/css';

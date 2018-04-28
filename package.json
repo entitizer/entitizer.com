@@ -51,6 +51,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "json-beautify": "^1.0.1",
+    "pump": "^3.0.0",
     "typescript": "^2.4.2",
     "vue": "^2.4.4"
   },
@@ -58,6 +59,7 @@
     "axios": "^0.16.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
+    "entipic.url": "^0.1.0",
     "express": "^4.15.2",
     "foundation-sites": "^6.4.3",
     "i18n": "^0.8.3",

@@ -9,5 +9,8 @@ export const route = Router();
 route.get('/', function (req: Request, res: Response) {
     maxageIndex(res);
     res.locals.site.head.canonical = 'http://' + project.host + '/';
+    res.locals.api = {
+        url: process.env.API_URL,
+    };
     res.render('index');
 });

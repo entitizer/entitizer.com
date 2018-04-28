@@ -4,10 +4,12 @@ const _package = require('../../package.json');
 import { moment } from '../utils';
 import { format } from 'util';
 import * as project from '../project';
+const entipicUrl = require('entipic.url')
 
 const util = {
 	moment: moment,
-	format: format
+	format: format,
+	entipicUrl,
 };
 
 export function root(req: Request, res: any, next: NextFunction) {
