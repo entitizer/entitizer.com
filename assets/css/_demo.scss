@@ -1,4 +1,46 @@
 
+#demo-header {
+    border-top-left-radius: $global-radius;
+	border-top-right-radius: $global-radius;
+    padding: 8px 20px;
+    border-bottom: 1px solid $dark-gray;
+    background: $medium-gray;
+    h4{
+        margin:0px;
+        margin:0px;
+    }
+}
+
+#demo {
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+}
+
+#demo-body {
+    background: #fff;
+    padding: 20px 10px 10px 10px;
+}
+
+#demo-footer {
+    background: $medium-gray;
+    padding: 10px 20px;
+    border-bottom-left-radius: $global-radius;
+	border-bottom-right-radius: $global-radius;
+}
+
+#demo-string-result {
+    display: block;
+    font-size: 80%;
+    border: none;
+    background: none;
+    max-height: 480px;
+}
+
+#demo {
+    .label{
+        font-size: 100%;
+    }
+}
+
 .c-media {
     zoom: 1;
     overflow: hidden;

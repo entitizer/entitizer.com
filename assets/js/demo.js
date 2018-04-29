@@ -10,21 +10,30 @@
         } catch (e) { }
     }
 
-    var API_URL = doc.getElementById('demo-app').getAttribute('data-url');
+    var demoAppEl = doc.getElementById('demo-app');
+
+    var API_URL = demoAppEl.getAttribute('data-url');
+    var API_LOCALES = JSON.parse(demoAppEl.getAttribute('data-locales'));
+    var API_LANGUAGES = Object.keys(API_LOCALES);
+    var DEMO_TEXT = demoAppEl.getAttribute('data-text');
+    var DEFAULT_LANG = demoAppEl.getAttribute('data-lang') || API_LANGUAGES[0];
+    var DEFAULT_COUNTRY = demoAppEl.getAttribute('data-country') || API_LOCALES[DEFAULT_LANG][0];
 
     var app = new Vue({
         el: '#demo-app',
         template: '#demo-template',
         data: {
             processing: false,
-            text: 'Federația Română de Fotbal a fost amendată de Comisia de Disciplină a Federației Internaționale (FIFA) cu 25.000 de franci elvețieni, iar Arena Națională a fost suspendată o partidă, după comportamentul nepotrivit al suporterilor naționalei României la meciurile cu Armenia și Muntenegru, relatează EFE, citată de Agerpres.',
-            lang: 'ro',
-            country: 'md',
+            text: DEMO_TEXT,
+            lang: DEFAULT_LANG,
+            country: DEFAULT_COUNTRY,
             url: API_URL,
             stringResult: '',
             jsonResult: '',
             error: '',
             entities: {},
+            languages: API_LANGUAGES,
+            countries: API_LOCALES[DEFAULT_LANG],
         },
 
         methods: {
@@ -44,7 +53,7 @@
                     .then(function (response) {
                         var result = response.data;
                         self.jsonResult = result;
-                        self.entities = result.data.entities;
+                        self.entities = result.data && result.data.entities || [];
 
                         // result.data.entities.forEach(function (item) {
                         //     var type = item.type || 'UNKNOWN';
@@ -69,6 +78,13 @@
                     .then(function () {
                         self.processing = false;
                     });
+            }
+        },
+
+        watch: {
+            lang: function (value) {
+                this.countries = API_LOCALES[value];
+                this.country = API_LOCALES[value][0];
             }
         }
     });

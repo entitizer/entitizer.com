@@ -4,23 +4,38 @@ extends ./_layouts/root
 block header_content
     .row
         .column.text-center
-            a(href='/')#logo=project.name
+            h1
+                a(href='/')#logo=project.name
 block main_content
     .row.column.text-center
-        h3 Free Named-Entity extraction for everyone!
+        h2 Free Named-Entity extraction for everyone!
     br
-    p.lead.text-center In active development. We're launching on November 1.
+    p.lead.text-center In active development.
     br
-    #demo-app(data-url=api.url)
+    #demo-app(data-url=api.url, data-lang='ro', data-country='md', data-locales=JSON.stringify(api.locales), data-text="Federația Română de Fotbal a fost amendată de Comisia de Disciplină a Federației Internaționale (FIFA) cu 25.000 de franci elvețieni, iar Arena Națională a fost suspendată o partidă, după comportamentul nepotrivit al suporterilor naționalei României la meciurile cu Armenia și Muntenegru, relatează EFE, citată de Agerpres.")
     br
-    section
-        h3.section-header FAQ
-        .section-body
-            dl
-                dt Q: API Requests Limits?
-                dd A: You can make 100 requests per hour per IP.
-                dt Q: Supported Languages?
-                dd A: Today Entitizer supports only Romanian. We plan to add a new language every 3 months.
+    .row
+        .column
+            h3.section-header FAQ
+            .section-body
+                dl
+                    dt Q: API Requests Limits?
+                    dd A: You can make 100 requests per hour per IP.
+                    dt Q: Supported Languages?
+                    dd A: Today Entitizer supports: 
+                        - var langs = Object.keys(api.locales)
+                        each lang, langIndex in langs
+                            strong= __('lang_'+lang)
+                            |  (
+                            each country, index in api.locales[lang]
+                                = __('country_'+country)
+                                if (api.locales[lang].length-1>index)
+                                    | ,  
+                            |)
+                            if (langs.length-1>langIndex)
+                                | , 
+                    
+                        | . We plan to add a new locale every 3 months.
     br
     script(type='v-template')#demo-template
         #demo
@@ -28,36 +43,38 @@ block main_content
                 h4 Demo
             #demo-body
                 .row
-                    .column.small-2
+                    .column.medium-2
                         label.label-method.label.secondary GET
-                    .column.small-10
+                    .column.medium-10
                         label#demo-url.label= api.url
                 br
                 .row
-                    .column.small-2
+                    .column.medium-2
                         label.label-param.label ?text=
-                    .column.small-10
+                    .column.medium-10
                         textarea(rows=4, cols=10, v-model="text")#demo-text
                 .row
-                    .column.small-2
+                    .column.medium-2
                         label.label-param.label &amp;lang=
-                    .column.small-2
+                    .column.medium-2
                         select#demo-lang(v-model="lang")
-                            option(value='ro') ro
-                    .column.small-8
+                            option(v-for="item in languages", :value="item") {{ item }}
+                    .column.medium-8
                     //- We work hard on adding new languages
                 .row
-                    .column.small-12.text-right
+                    .column.medium-2
+                        label.label-param.label &amp;country=
+                    .column.medium-2
+                        select#demo-country(v-model="country")
+                            option(v-for="item in countries", :value="item") {{ item }}
+                    .column.medium-8
+                    //- We work hard on adding new languages
+                .row
+                    .column.text-right
                         button(type='buttom', v-on:click='processText', v-if="!processing", v-bind:disabled="!lang || !text || text.length<10").button.alert Process
                         button(type='buttom', disabled, v-if="processing").button.alert Processing
             #demo-footer(v-if="!!stringResult")
                 .row
-                    .column.medium-7
-                        h4 JSON Response
-                        pre
-                            code#demo-string-result {{ stringResult }}
-                        br
-                        br
                     .column.medium-5
                         h4 Entities
                         ul.u-unstyled
@@ -69,6 +86,14 @@ block main_content
                                         h6 {{ item.entity.name }}
                                             sup  {{ item.entity.type }}
                                         p {{ item.entity.description }}
+                        br
+                        br
+                    .column.medium-7
+                        h4 JSON Response
+                        pre
+                            code#demo-string-result {{ stringResult }}
+                        br
+                        br
                 
 
 block scripts
