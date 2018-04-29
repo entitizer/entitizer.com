@@ -51,41 +51,25 @@ block main_content
                         button(type='buttom', v-on:click='processText', v-if="!processing", v-bind:disabled="!lang || !text || text.length<10").button.alert Process
                         button(type='buttom', disabled, v-if="processing").button.alert Processing
             #demo-footer(v-if="!!stringResult")
-                h4 View Response
                 .row
-                    .column.medium-4
-                        h4 Persons
+                    .column.medium-7
+                        h4 JSON Response
+                        pre
+                            code#demo-string-result {{ stringResult }}
+                        br
+                        br
+                    .column.medium-5
+                        h4 Entities
                         ul.u-unstyled
-                            li(v-for="item in persons")
+                            li(v-for="item in entities")
                                 .c-media
                                     .c-media_icon
-                                        img(:src="entipicUrl(item.entity.name, 'ro')", :alt="item.entity.name")
+                                        img(:src="entipicUrl(item.entity.name)", :alt="item.entity.name")
                                     .c-media_body
                                         h6 {{ item.entity.name }}
+                                            sup  {{ item.entity.type }}
                                         p {{ item.entity.description }}
-                    .column.medium-4
-                        h4 Places
-                        ul.u-unstyled
-                            li(v-for="item in places")
-                                .c-media
-                                    .c-media_icon
-                                        img(:src="entipicUrl(item.entity.name, 'ro')", :alt="item.entity.name")
-                                    .c-media_body
-                                        h6 {{ item.entity.name }}
-                                        p {{ item.entity.description }}
-                    .column.medium-4
-                        h4 Organizations
-                        ul.u-unstyled
-                            li(v-for="item in orgs")
-                                .c-media
-                                    .c-media_icon
-                                        img(:src="entipicUrl(item.entity.name, 'ro')", :alt="item.entity.name")
-                                    .c-media_body
-                                        h6 {{ item.entity.name }}
-                                        p {{ item.entity.description }}
-                h4 JSON Response
-                pre
-                    code#demo-string-result {{ stringResult }}
+                
 
 block scripts
     script(src="/assets/js/demo.js?v="+project.version)

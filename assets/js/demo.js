@@ -24,15 +24,12 @@
             stringResult: '',
             jsonResult: '',
             error: '',
-            persons: [],
-            places: [],
-            orgs: [],
-            concepts: [],
+            entities: {},
         },
 
         methods: {
-            entipicUrl: function (name, lang) {
-                return '//cdn.entipic.com/' + lang + '/' + name.replace(/\s+/g, '_') + '.jpg';
+            entipicUrl: function (name) {
+                return '//cdn.entipic.com/' + this.lang.toLowerCase() + '-' + this.country.toLowerCase() + '/' + name.replace(/\s+/g, '_') + '.jpg';
             },
             processText: function () {
                 var self = this;
@@ -47,21 +44,13 @@
                     .then(function (response) {
                         var result = response.data;
                         self.jsonResult = result;
-                        self.persons = []
-                        self.places = []
-                        self.orgs = []
-                        self.concepts = []
-                        function getSet(type) {
-                            switch (type) {
-                                case 'PERSON': return self.persons;
-                                case 'PLACE': return self.places;
-                                case 'ORG': return self.orgs;
-                                default: return self.concepts;
-                            }
-                        }
-                        result.data.entities.forEach(function (item) {
-                            getSet(item.entity.type).push(item)
-                        })
+                        self.entities = result.data.entities;
+
+                        // result.data.entities.forEach(function (item) {
+                        //     var type = item.type || 'UNKNOWN';
+                        //     self.entities[type] = self.entities[type] || [];
+                        //     self.entities[type].push(item);
+                        // })
                         self.stringResult = beautify(result, null, 2, 80);
                         // console.log(self.stringResult || result || 'NO RESULT');
                         gEvent('text-processed', {
