@@ -8,11 +8,11 @@ block header_content
                 a(href='/')#logo=project.name
 block main_content
     .row.column.text-center
-        h2 Free Named-Entity extraction for everyone!
+        h2 Free Named-Entity recognition made simple!
     br
     p.lead.text-center In active development.
     br
-    #demo-app(data-url=api.url, data-lang='ro', data-country='md', data-locales=JSON.stringify(api.locales), data-text="Federația Română de Fotbal a fost amendată de Comisia de Disciplină a Federației Internaționale (FIFA) cu 25.000 de franci elvețieni, iar Arena Națională a fost suspendată o partidă, după comportamentul nepotrivit al suporterilor naționalei României la meciurile cu Armenia și Muntenegru, relatează EFE, citată de Agerpres.")
+    #demo-app(data-url=Config.api.url, data-lang='ro', data-country='md', data-locales=JSON.stringify(Config.api.locales), data-text="Federația Română de Fotbal a fost amendată de Comisia de Disciplină a Federației Internaționale (FIFA) cu 25.000 de franci elvețieni, iar Arena Națională a fost suspendată o partidă, după comportamentul nepotrivit al suporterilor naționalei României la meciurile cu Armenia și Muntenegru, relatează EFE, citată de Agerpres.")
     br
     .row
         .column
@@ -23,13 +23,13 @@ block main_content
                     dd A: You can make 100 requests per hour per IP.
                     dt Q: Supported Languages?
                     dd A: Today Entitizer supports: 
-                        - var langs = Object.keys(api.locales)
+                        - var langs = Object.keys(Config.api.locales)
                         each lang, langIndex in langs
                             strong= __('lang_'+lang)
                             |  (
-                            each country, index in api.locales[lang]
+                            each country, index in Config.api.locales[lang]
                                 = __('country_'+country)
-                                if (api.locales[lang].length-1>index)
+                                if (Config.api.locales[lang].length-1>index)
                                     | ,  
                             |)
                             if (langs.length-1>langIndex)
@@ -46,7 +46,7 @@ block main_content
                     .column.medium-2
                         label.label-method.label.secondary GET
                     .column.medium-10
-                        label#demo-url.label= api.url
+                        label#demo-url.label= Config.api.url
                 br
                 .row
                     .column.medium-2
@@ -94,6 +94,8 @@ block main_content
                             code#demo-string-result {{ stringResult }}
                         br
                         br
+                small(v-if="entities.length>0") Entity images provided by 
+                    a(href='http://entipic.com', target='_blank') Entipic.com
                 
 
 block scripts

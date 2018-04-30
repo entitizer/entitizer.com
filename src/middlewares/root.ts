@@ -4,7 +4,8 @@ const _package = require('../../package.json');
 import { moment } from '../utils';
 import { format } from 'util';
 import * as project from '../project';
-const entipicUrl = require('entipic.url')
+import { Config } from '../config';
+const entipicUrl = require('entipic.url');
 
 const util = {
 	moment: moment,
@@ -31,13 +32,7 @@ export function root(req: Request, res: any, next: NextFunction) {
 
 	res.locals.util = util;
 
-	res.locals.api = {
-		url: process.env.API_URL,
-		locales: {
-			ro: ['md', 'ro'],
-			ru: ['md', 'ru'],
-		}
-	};
+	res.locals.Config = Config
 
 	next();
 };

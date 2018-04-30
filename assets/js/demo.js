@@ -68,7 +68,6 @@
                         });
                     })
                     .catch(function (error) {
-                        console.log(error);
                         self.error = error.message;
                         gEvent('exception', {
                             'description': error,
