@@ -12,7 +12,7 @@ block main_content
     br
     p.lead.text-center In active development.
     br
-    #demo-app(data-url=Config.api.url, data-lang='ro', data-country='md', data-locales=JSON.stringify(Config.api.locales), data-text="Președintele Statelor Unite, Donald Trump, a sugerat, luni, că viitoarea sa întâlnire cu liderul regimului de la Phenian, Kim Jong-un, ar putea avea loc în \"Casa Păcii\", situată la granița dintre Coreea de Nord și Coreea de Sud, relatează site-ul agenției Yonhap")
+    #demo-app(data-url=Config.api.url, data-lang=Config.api.defaultLocale.lang, data-country=Config.api.defaultLocale.country, data-locales=JSON.stringify(Config.api.locales), data-text=Config.api.demoText)
     br
     .row
         .column
