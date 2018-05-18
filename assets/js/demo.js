@@ -16,6 +16,7 @@
     var API_LOCALES = JSON.parse(demoAppEl.getAttribute('data-locales'));
     var API_LANGUAGES = Object.keys(API_LOCALES);
     var DEMO_TEXT = demoAppEl.getAttribute('data-text');
+    var DEMO_WIKIDATA = !!demoAppEl.getAttribute('data-wikidata');
     var DEFAULT_LANG = demoAppEl.getAttribute('data-lang') || API_LANGUAGES[0];
     var DEFAULT_COUNTRY = demoAppEl.getAttribute('data-country') || API_LOCALES[DEFAULT_LANG][0];
 
@@ -34,6 +35,7 @@
             entities: {},
             languages: API_LANGUAGES,
             countries: API_LOCALES[DEFAULT_LANG],
+            wikidata: DEMO_WIKIDATA,
         },
 
         methods: {
@@ -48,7 +50,7 @@
                 this.processing = true;
 
                 axios.get(this.url, {
-                    params: { text: this.text, lang: this.lang, country: this.country }
+                    params: { text: this.text, lang: this.lang, country: this.country, wikidata: this.wikidata }
                 })
                     .then(function (response) {
                         var result = response.data;

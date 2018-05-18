@@ -44,29 +44,39 @@ block main_content
             #demo-body
                 .row
                     .column.medium-2
-                        label.label-method.label.secondary GET
+                        label.label-method.label.alert
+                            strong GET
                     .column.medium-10
-                        label#demo-url.label= Config.api.url
+                        label#demo-url.label.secondary= Config.api.url
                 br
                 .row
                     .column.medium-2
-                        label.label-param.label ?text=
+                        label.label-param.label.secondary ?text=
                     .column.medium-10
                         textarea(rows=4, cols=10, v-model="text")#demo-text
                 .row
-                    .column.medium-2
-                        label.label-param.label &amp;lang=
-                    .column.medium-2
+                    .column.medium-2.small-5
+                        label.label-param.label.secondary &amp;lang=
+                    .column.medium-2.small-7
                         select#demo-lang(v-model="lang")
                             option(v-for="item in languages", :value="item") {{ item }}
                     .column.medium-8
                     //- We work hard on adding new languages
                 .row
-                    .column.medium-2
-                        label.label-param.label &amp;country=
-                    .column.medium-2
+                    .column.medium-2.small-5
+                        label.label-param.label.secondary &amp;country=
+                    .column.medium-2.small-7
                         select#demo-country(v-model="country")
                             option(v-for="item in countries", :value="item") {{ item }}
+                    .column.medium-8
+                    //- We work hard on adding new languages
+                .row
+                    .column.medium-2.small-5
+                        label.label-param.label.secondary &amp;wikidata=
+                    .column.medium-2.small-7
+                        select#demo-wikidata(type="checkbox",v-model="wikidata")
+                            option(value='true') true
+                            option(value='false') false
                     .column.medium-8
                     //- We work hard on adding new languages
                 .row
