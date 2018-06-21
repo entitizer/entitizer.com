@@ -3,7 +3,8 @@ export const Config = {
     api: {
         url: process.env.API_URL,
         locales: {
-            ro: ['ro', 'md']
+            ro: ['ro', 'md'],
+            ru: ['ru']
         },
         defaultLocale: {
             lang: 'ro',
