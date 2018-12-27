@@ -86,6 +86,7 @@
             lang: function (value) {
                 this.countries = API_LOCALES[value];
                 this.country = API_LOCALES[value][0];
+                this.entities = {};
             }
         }
     });

@@ -3,5 +3,15 @@
 	"country_md": "Moldova",
 	"country_ro": "Romania",
 	"lang_ru": "Russian",
-	"country_ru": "Russia"
+	"country_ru": "Russia",
+	"lang_bg": "Bulgarian",
+	"country_bg": "Bulgaria",
+	"lang_hu": "Hungarian",
+	"country_hu": "Hungary",
+	"lang_cs": "Czech",
+	"country_cz": "Czech Republic",
+	"lang_it": "Italian",
+	"country_it": "Italia",
+	"lang_en": "English",
+	"country_in": "India"
 }

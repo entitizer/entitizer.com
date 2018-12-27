@@ -4,7 +4,12 @@ export const Config = {
         url: process.env.API_URL,
         locales: {
             ro: ['ro', 'md'],
-            ru: ['ru']
+            ru: ['ru', 'md'],
+            bg: ['bg'],
+            hu: ['hu'],
+            cs: ['cz'],
+            it: ['it'],
+            en: ['in']
         },
         defaultLocale: {
             lang: 'ro',
