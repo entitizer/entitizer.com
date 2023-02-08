@@ -11,8 +11,8 @@
     "test": "mocha",
     "tsc": "tsc",
     "tscw": "tsc -w",
-    "gulp": "./node_modules/.bin/gulp",
-    "browserify": "./node_modules/.bin/browserify ./assets/js/demo.js -o ./public/assets/js/demo.js",
+    "gulp": "gulp",
+    "browserify": "browserify ./assets/js/demo.js -o ./public/assets/js/demo.js",
     "preversion": "npm run tsc",
     "postversion": "git push --follow-tags",
     "prepublish": "npm run tsc"
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/express": "^4.0.35",
     "@types/node": "^8.x.x",
-    "browserify": "^14.4.0",
+    "browserify": "^16.5.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-changed": "^3.1.0",
@@ -64,9 +64,13 @@
     "foundation-sites": "^6.4.3",
     "i18n": "^0.8.3",
     "moment": "^2.18.1",
+    "node-sass": "^8.0.0",
     "pug": "^2.0.0-rc.4"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.10"
   }
 }
