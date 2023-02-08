@@ -2,7 +2,7 @@ require("dotenv").config();
 
 import express from "express";
 import { logger } from "./logger";
-import * as path from "path";
+import path from "path";
 import { boot } from "./boot";
 import { mountRoutes } from "./routes";
 const cookieParser = require("cookie-parser");

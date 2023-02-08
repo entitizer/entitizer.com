@@ -15,10 +15,10 @@ const util = {
 export function root(_req: Request, res: any, next: NextFunction) {
   res.locals.project = project;
 
-  // const culture = res.locals.culture = {
-  // 	language: res.locale,
-  // 	lang: res.locale
-  // };
+  res.locals.culture = {
+    language: res.locale,
+    lang: res.locale
+  };
 
   res.locals.site = {
     version: _package.version,
