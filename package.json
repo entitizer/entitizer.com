@@ -5,7 +5,7 @@
   "main": "./lib/app.js",
   "private": true,
   "scripts": {
-    "start": "tsc && npm run build && node ./lib/app.js",
+    "start": "npm run tsc && npm run build && node ./lib/app.js",
     "build": "npm run browserify && npm run gulp",
     "pretest": "npm run tsc && npm run gulp",
     "test": "mocha",
@@ -18,7 +18,7 @@
     "prepublish": "npm run tsc"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   },
   "repository": {
     "type": "git",
@@ -64,7 +64,6 @@
     "foundation-sites": "^6.4.3",
     "i18n": "^0.8.3",
     "moment": "^2.18.1",
-    "ournet.logger": "^0.1.0",
     "pug": "^2.0.0-rc.4"
   },
   "browser": {

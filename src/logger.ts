@@ -1,10 +1,14 @@
-
-export const logger = require('ournet.logger');
-
-if (process.env.NODE_ENV === 'production') {
-	logger.loggly({
-		tags: ['entitizer-com'],
-		json: true
-	});
-	logger.removeConsole();
-}
+export const logger = {
+  log(...args: any[]) {
+    console.log(...args);
+  },
+  info(...args: any[]) {
+    console.info(...args);
+  },
+  warn(...args: any[]) {
+    console.warn(...args);
+  },
+  error(...args: any[]) {
+    console.error(...args);
+  }
+};
