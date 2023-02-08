@@ -2,7 +2,7 @@
 
 #update repository
 git pull
-npm install
-tsc
-npm run build
+yarn
+yarn tsc
+yarn build
 pm2 restart ./pm2.json

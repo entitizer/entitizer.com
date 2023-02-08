@@ -1,5 +1,5 @@
 {
-    "script": "./lib/app.js",
-    "max_memory_restart": "200M",
-    "name": "entitizer-com"
+  "script": "./lib/app.js",
+  "max_memory_restart": "200M",
+  "name": "entitizer-com"
 }
