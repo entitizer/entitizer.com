@@ -8,7 +8,8 @@ export const Config = {
       hu: ["hu"],
       cs: ["cz"],
       it: ["it"],
-      en: ["in"]
+      en: ["in"],
+      es: ["es"]
     },
     defaultLocale: {
       lang: "ro",

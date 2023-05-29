@@ -7,6 +7,6 @@ export const route = Router();
 //index
 route.get("/", function (_req: Request, res: Response) {
   maxageIndex(res);
-  res.locals.site.head.canonical = "http://" + project.host + "/";
+  res.locals.site.head.canonical = "https://" + project.host + "/";
   res.render("index");
 });
