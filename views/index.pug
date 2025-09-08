@@ -78,6 +78,14 @@ block main_content
                             option(value='true') true
                             option(value='false') false
                     .column.medium-8
+                .row
+                    .column.medium-2.small-5
+                        label.label-param.label.secondary &amp;quotes=
+                    .column.medium-2.small-7
+                        select#demo-quotes(type="checkbox",v-model="quotes")
+                            option(value='true') true
+                            option(value='false') false
+                    .column.medium-8
                     //- We work hard on adding new languages
                 .row
                     .column.text-right

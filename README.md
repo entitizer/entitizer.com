@@ -1,3 +1,3 @@
 # entitizer.com
 
-[Entitizer.com](http://entitizer.com) website.
+[Entitizer.com](https://entitizer.com) website.
