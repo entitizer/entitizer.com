@@ -1,6 +1,6 @@
 {
   "name": "entitizer.com",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Entitizer.com",
   "main": "./lib/app.js",
   "private": true,
